@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>EMPLOYEE MANAGEMENT SYSTEM</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+	
+	<style>
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: lightgrey;
+  color: darkblue;
+}
+
+header {
+  text-align: center;
+  padding: 3px;
+  background-color: lightgrey;
+  color: darkblue;
+}
+</style>
+</head>
+<body style="background-color:rgb(240, 240, 240);">
+
+<br>
+		<article> 
+           <header > 
+                <h3><p style="color:maroon">Employee Time Tracking System</p></h3>
+            </header> 
+        </article> 
+
+
+	<div class="jumbotron" >
+	
+	<h5 style="color:darkblue">Requested Employee Details Searched By Email Id :</h5>
+	
+	<a th:href="@{/home}">Back To Employee List</a>
+<hr>
+		<table border="2" class="table table-hover">
+			<thead>
+				<tr>
+					<th>Employee Email</th>
+					<th>Employee Name</th>
+					<th>Employee Department</th>
+					<th>In Date</th>
+					<th>Out Date</th>
+					<th>In Time</th>
+					<th>Out Time</th>
+					<th>Action on Data</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${empList}">
+
+					<td th:text="${employee.email}"></td>
+					<td th:text="${employee.name}"></td>
+					<td th:text="${employee.department}"></td>
+					<td th:text="${employee.inDate}"></td>
+					<td th:text="${employee.outDate}"></td>
+					<td th:text="${employee.inTime}"></td>
+					<td th:text="${employee.outTime}"></td>
+					<td style="text-align: center;"><a
+						th:href="@{/updateFormSearchByEmail/{eid}(eid=${employee.eid})}"
+						class="btn btn-primary"> Update</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+<footer>
+  <p>Author: Ruturaj Shinde<br>
+  <a href="/">Home</a>
+  <h5>Thank you for using ETTS !</h5>
+</footer>
+</body>
+</html>
