@@ -19,6 +19,12 @@ import com.employetimetracking.repository.EmployeeRepository;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+	/*
+	 * @Autowired
+	 * 
+	 * RestTemplate restTemplate;
+	 */
+	
 	/**
 	 * Inject EmployeeRepository to EmployeeServiceImpl
 	 */
@@ -43,11 +49,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * its a get all employee operation available in database by email id input
 	 * 
 	 * method call on getEmployeeByEmail
+	 * method call on getEmployeeByEmail We also can use external service to get
+	 * data on other system by calling URL of it
 	 * 
 	 * return available employee list with email search
 	 */
 	@Override
 	public List<Employee> getEmployeeByEmail(String email) {
+		
+		/*
+		 * providing implementation for external service call
+		 * List<Employee> empList = null; JSONPObject[] jsonObjarray = null; String
+		 * inEmail = email; Employee forObject =
+		 * restTemplate.getForObject("http://localhost:8080/records/" + inEmail,
+		 * Employee.class); empList.add(forObject);
+		 */
+		
+		
 		List<Employee> empList = null;
 		empList = employeeRepository.findByEmail(email);
 
@@ -60,12 +78,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	/**
 	 * its a employee save operation to database table
-	 * 
+	 * method call on addEmployee We also can use external service to SAVE NE EMPLOYEE OBJ
+	 * data on other system by calling URL of it 
 	 * method call on addEmployee with employee obj as input
 	 * 
 	 */
 	@Override
 	public void addEmployee(Employee emp) {
+		
+		/*
+		 * providing implementation for external service save call
+		 * Employee emp=new Employee(); 
+		 * restTemplate.getForObject("http://localhost:8080/emp",
+		  Employee.class);
+		 */
+		
 		employeeRepository.save(emp);
 	}
 
