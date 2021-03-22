@@ -19,6 +19,7 @@ import com.employetimetracking.services.EmployeeService;
  *
  */
 @Controller
+/* @RestController */
 public class EmployeeController {
 
 	/**
